@@ -22,7 +22,7 @@ const dataset = L.geoJSON(table, {
   onEachFeature: function (feature, layer) {
 
          const popupContent =
-        '<h4 class = "text-primary">Street Light</h4>' +
+        '<h4 class = "text-primary">Sample Point</h4>' +
         '<div class="container"><table class="table table-striped">' +
         "<thead><tr><th>Properties</th><th>Value</th></tr></thead>" +
         "<tbody><tr><td> CouName </td><td>" +

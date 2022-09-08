@@ -33,10 +33,12 @@ fetch("data/Mikocheni_dumb_grid.geojson")
       return response.json();
     })
     .then(function(data) {
-      L.geoJSON(data).addTo(map);
+      L.geoJSON(data).addTo(map).bindPopup("<img src=data/QR_codes/Mikocheni_buildings_197.gif>");
     })
 
-    function onEachFeature(feature, layer) {
+
+   
+   /* function onEachFeature(feature, layer) {
       layer.bindPopup(feature.properties.name);
     }
     fetch("data/Mikocheni_grid_centroids.geojson")
@@ -52,6 +54,6 @@ fetch("data/Mikocheni_dumb_grid.geojson")
       }).addTo(map);
   
     })
-
+*/
     
     

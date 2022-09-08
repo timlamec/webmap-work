@@ -8,6 +8,17 @@ const osm = L.tileLayer(
   }
 ).addTo(map);
 
+//creating some icons
+
+var houseIcon = L.icon({
+  iconUrl: 'data/download.svg',
+  iconSize:     [20, 52], // size of the icon
+  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+//L.marker([-6.785568, 39.261278], {icon: houseIcon}).addTo(map);
+
 
 fetch("data/Mikocheni.geojson")
     .then(function(response) {
@@ -24,3 +35,23 @@ fetch("data/Mikocheni_dumb_grid.geojson")
     .then(function(data) {
       L.geoJSON(data).addTo(map);
     })
+
+    function onEachFeature(feature, layer) {
+      layer.bindPopup(feature.properties.name);
+    }
+    fetch("data/Mikocheni_grid_centroids.geojson")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+                  return L.marker(latlng, {icon: houseIcon});
+          },
+        onEachFeature: onEachFeature
+      }).addTo(map);
+  
+    })
+
+    
+    
